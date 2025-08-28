@@ -27,19 +27,19 @@ class _SpendsState extends State<Spends> {
       title: "Test1",
       amount: 100,
       date: DateTime.now(),
-      category: Category.fun,
+      category: SpendCategory.fun,
     ),
     Spend(
       title: "Test2",
       amount: 200,
       date: DateTime.now(),
-      category: Category.food,
+      category: SpendCategory.food,
     ),
     Spend(
       title: "Test3",
       amount: 50,
       date: DateTime.now(),
-      category: Category.transport,
+      category: SpendCategory.transport,
     ),
   ];
 

@@ -1,7 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-
-final dateFormatter = DateFormat.yMd();
+import 'package:flutter_spendybuddy/models/spend.dart';
 
 class NewSpend extends StatefulWidget {
   const NewSpend({super.key});
@@ -16,6 +15,7 @@ class _NewSpendState extends State<NewSpend> {
   final _spendTitleController = TextEditingController();
   final _spendAmountController = TextEditingController();
   DateTime? _selectedDate;
+  SpendCategory _selectedCategory = SpendCategory.values[0];
 
   void _pickDate() async {
     final present = DateTime.now();
@@ -90,8 +90,31 @@ class _NewSpendState extends State<NewSpend> {
               ),
             ],
           ),
+          SizedBox(height: 24),
           Row(
             children: [
+              DropdownButton(
+                value: _selectedCategory,
+                items: SpendCategory.values
+                    .map(
+                      (category) => DropdownMenuItem(
+                        value: category,
+                        child: Text(
+                          category.name.toUpperCase(),
+                        ),
+                      ),
+                    )
+                    .toList(),
+                onChanged: (value) {
+                  if (value == null) {
+                    return;
+                  }
+                  setState(() {
+                    _selectedCategory = value;
+                  });
+                },
+              ),
+              const Spacer(),
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
