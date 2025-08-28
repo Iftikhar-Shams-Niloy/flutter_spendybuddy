@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spendybuddy/models/spend.dart';
 
@@ -16,6 +15,31 @@ class _NewSpendState extends State<NewSpend> {
   final _spendAmountController = TextEditingController();
   DateTime? _selectedDate;
   SpendCategory _selectedCategory = SpendCategory.values[0];
+
+  void _saveSpend() {
+    final enteredAmount = double.tryParse(_spendAmountController.text);
+    final invalidAmount = enteredAmount == null || enteredAmount < 0;
+    final emptyField =
+        _spendTitleController.text.trim().isEmpty || _selectedDate == null;
+    if (invalidAmount || emptyField) {
+      showDialog(
+        context: context,
+        builder: (ctx) => AlertDialog(
+          title: const Text("Invalid Input!"),
+          content: const Text("Please enter valid amount and date."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(ctx);
+              },
+              child: const Text("Okay"),
+            ),
+          ],
+        ),
+      );
+      return;
+    }
+  }
 
   void _pickDate() async {
     final present = DateTime.now();
@@ -122,10 +146,7 @@ class _NewSpendState extends State<NewSpend> {
                 child: const Text("Cancel"),
               ),
               ElevatedButton(
-                onPressed: () {
-                  print(_spendTitleController.text);
-                  print(_spendAmountController.text);
-                },
+                onPressed: _saveSpend,
                 child: Text("Save"),
               ),
             ],
