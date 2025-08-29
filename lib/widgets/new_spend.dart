@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spendybuddy/models/spend.dart';
 
 class NewSpend extends StatefulWidget {
-  const NewSpend({super.key});
+  const NewSpend({super.key, required this.onAddSpend});
+
+  final void Function(Spend spend) onAddSpend;
 
   @override
   State<NewSpend> createState() {
@@ -39,6 +41,14 @@ class _NewSpendState extends State<NewSpend> {
       );
       return;
     }
+    widget.onAddSpend(
+      Spend(
+        title: _spendTitleController.text,
+        amount: enteredAmount,
+        date: _selectedDate!,
+        category: _selectedCategory,
+      ),
+    );
   }
 
   void _pickDate() async {
