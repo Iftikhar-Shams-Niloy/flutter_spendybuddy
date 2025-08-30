@@ -19,6 +19,19 @@ class SpendsList extends StatelessWidget {
       itemBuilder: (ctx, index) {
         return Dismissible(
           key: ValueKey(spends[index]),
+          background: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.red.shade800,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: const Icon(
+              Icons.delete,
+              color: Colors.black,
+              size: 32,
+            ),
+          ),
           onDismissed: (direction) {
             removeSpend(spends[index]);
           },

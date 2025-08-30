@@ -15,6 +15,7 @@ class SpendItem extends StatelessWidget {
           vertical: 16,
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(spend.title),
             const SizedBox(height: 4),

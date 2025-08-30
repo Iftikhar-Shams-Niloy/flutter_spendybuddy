@@ -49,6 +49,7 @@ class _NewSpendState extends State<NewSpend> {
         category: _selectedCategory,
       ),
     );
+    Navigator.pop(context);
   }
 
   void _pickDate() async {
@@ -97,7 +98,7 @@ class _NewSpendState extends State<NewSpend> {
                   controller: _spendAmountController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    prefixText: "\৳",
+                    prefixText: "৳",
                     label: Text("Amount Spent"),
                   ),
                 ),

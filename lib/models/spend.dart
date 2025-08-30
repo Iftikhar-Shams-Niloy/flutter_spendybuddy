@@ -34,3 +34,26 @@ class Spend {
     return dateFormatter.format(date);
   }
 }
+
+class SpendBucket {
+  const SpendBucket({
+    required this.spendCategory,
+    required this.spends,
+  });
+
+  SpendBucket.forSpendCategory(List<Spend> allSpends, this.spendCategory)
+    : spends = allSpends
+          .where((spend) => spend.category == spendCategory)
+          .toList();
+
+  final SpendCategory spendCategory;
+  final List<Spend> spends;
+
+  double get totalSpends {
+    double sum = 0;
+    for (final spend in spends) {
+      sum += spend.amount;
+    }
+    return sum;
+  }
+}

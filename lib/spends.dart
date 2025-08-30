@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_spendybuddy/models/spend.dart';
+import 'package:flutter_spendybuddy/widgets/chart/chart.dart';
 import 'package:flutter_spendybuddy/widgets/new_spend.dart';
 import 'package:flutter_spendybuddy/widgets/spends_list/spends_list.dart';
 
@@ -52,26 +53,7 @@ class _SpendsState extends State<Spends> {
     );
   }
 
-  final List<Spend> _registeredSpends = [
-    Spend(
-      title: "Test1",
-      amount: 100,
-      date: DateTime.now(),
-      category: SpendCategory.fun,
-    ),
-    Spend(
-      title: "Test2",
-      amount: 200,
-      date: DateTime.now(),
-      category: SpendCategory.food,
-    ),
-    Spend(
-      title: "Test3",
-      amount: 50,
-      date: DateTime.now(),
-      category: SpendCategory.transport,
-    ),
-  ];
+  final List<Spend> _registeredSpends = [];
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +86,10 @@ class _SpendsState extends State<Spends> {
       ),
       body: Column(
         children: [
-          Text("The Chart"),
+          Chart(spends: _registeredSpends),
+          SizedBox(
+            height: 6,
+          ),
           Expanded(
             child: mainContent,
           ),
