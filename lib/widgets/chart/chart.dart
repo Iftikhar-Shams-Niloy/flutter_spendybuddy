@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_spendybuddy/widgets/chart/chart_bar.dart';
 import 'package:flutter_spendybuddy/models/spend.dart';
 
@@ -59,7 +58,7 @@ class Chart extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                for (final bucket in buckets) // alternative to map()
+                for (final bucket in buckets)
                   ChartBar(
                     fill: bucket.totalSpends == 0
                         ? 0
