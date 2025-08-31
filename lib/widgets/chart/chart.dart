@@ -14,7 +14,7 @@ class Chart extends StatelessWidget {
       SpendBucket.forSpendCategory(spends, SpendCategory.fun),
       SpendBucket.forSpendCategory(spends, SpendCategory.transport),
       SpendBucket.forSpendCategory(spends, SpendCategory.work),
-      SpendBucket.forSpendCategory(spends, SpendCategory.fun),
+      SpendBucket.forSpendCategory(spends, SpendCategory.others),
     ];
   }
 
@@ -68,7 +68,7 @@ class Chart extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           Row(
             children: buckets
                 .map(

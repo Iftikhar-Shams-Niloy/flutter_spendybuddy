@@ -57,8 +57,11 @@ class _SpendsState extends State<Spends> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     Widget mainContent = Center(
-      child: Text("No speding yet!. Spend some money!😉"),
+      child: Text("No speding yet! Spend some money!😉"),
     );
 
     if (_registeredSpends.isNotEmpty) {
@@ -84,17 +87,29 @@ class _SpendsState extends State<Spends> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Chart(spends: _registeredSpends),
-          SizedBox(
-            height: 6,
-          ),
-          Expanded(
-            child: mainContent,
-          ),
-        ],
-      ),
+      body: screenHeight / screenWidth >= 1
+          ? Column(
+              children: [
+                Chart(spends: _registeredSpends),
+                SizedBox(
+                  height: 6,
+                ),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            )
+          : Row(
+              children: [
+                Expanded(child: Chart(spends: _registeredSpends)),
+                SizedBox(
+                  height: 6,
+                ),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            ),
     );
   }
 }
