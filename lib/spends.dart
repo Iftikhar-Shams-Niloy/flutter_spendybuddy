@@ -15,27 +15,31 @@ class Spends extends StatefulWidget {
 
 class _SpendsState extends State<Spends> {
   void _openAddSpendOverlay() {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       builder: (ctx) {
-        return screenHeight > screenWidth
-            ? SizedBox(
-                height: screenHeight * 2 / 3,
-                width: screenWidth - 10,
-                child: NewSpend(
-                  onAddSpend: _addSpend,
-                ),
-              )
-            : SizedBox(
-                height: screenHeight,
-                width: screenWidth,
-                child: NewSpend(
-                  onAddSpend: _addSpend,
-                ),
-              );
+        return OrientationBuilder(
+          builder: (context, orientation) {
+            final screenHeight = MediaQuery.of(context).size.height;
+            final screenWidth = MediaQuery.of(context).size.width;
+            return screenHeight > screenWidth
+                ? SizedBox(
+                    height: screenHeight * 2 / 3,
+                    width: screenWidth,
+                    child: NewSpend(
+                      onAddSpend: _addSpend,
+                    ),
+                  )
+                : SizedBox(
+                    height: screenHeight,
+                    width: screenWidth - 20,
+                    child: NewSpend(
+                      onAddSpend: _addSpend,
+                    ),
+                  );
+          },
+        );
       },
     );
   }
