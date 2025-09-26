@@ -53,6 +53,7 @@ void main() {
       ),
       themeMode: ThemeMode.system,
       home: const Spends(),
+      debugShowCheckedModeBanner: false,
     ),
   );
 }

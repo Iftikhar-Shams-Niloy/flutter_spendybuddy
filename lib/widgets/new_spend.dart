@@ -84,6 +84,7 @@ class _NewSpendState extends State<NewSpend> {
       child: Padding(
         padding: EdgeInsets.fromLTRB(24, 24, 24, keyboardSpace + 24),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextField(
               controller: _spendTitleController,
@@ -105,29 +106,38 @@ class _NewSpendState extends State<NewSpend> {
                     ),
                   ),
                 ),
-                const SizedBox(width: 16),
+
                 Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        _selectedDate == null
-                            ? 'No Date Selected!'
-                            : dateFormatter.format(_selectedDate!),
+                      Expanded(
+                        child: Text(
+                          _selectedDate == null
+                              ? 'Select Date!'
+                              : dateFormatter.format(_selectedDate!),
+                          textAlign: TextAlign.end,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
                       ),
+
                       IconButton(
                         onPressed: _pickDate,
-                        icon: const Icon(
-                          Icons.calendar_month_rounded,
-                        ),
+                        icon: const Icon(Icons.calendar_month_rounded),
+                        padding: const EdgeInsets.all(8.0),
+                        constraints: const BoxConstraints(),
+                        splashRadius: 20,
                       ),
                     ],
                   ),
                 ),
               ],
             ),
+
             SizedBox(height: 24),
+
             Row(
               children: [
                 DropdownButton(
