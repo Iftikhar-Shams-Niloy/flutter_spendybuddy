@@ -31,10 +31,12 @@
   <tr>
     <th>Light Mode</th>
     <th>Dark Mode</th>
+    <th>GIF Example</th>
   </tr>
   <tr>
-    <td><img src="" width="250"></td>
-    <td><img src="" width="250"></td>
+    <td><img src="readme_assets/spendy_buddy_ex1.jpg" width="160"></td>
+    <td><img src="readme_assets/spendy_buddy_ex2.jpg" width="160"></td>
+    <td><img src="readme_assets/spendy_buddy_gif_example.gif" width="160"></td>
   </tr>
 </table>
 
