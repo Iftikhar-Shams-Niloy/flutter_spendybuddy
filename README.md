@@ -31,10 +31,12 @@
   <tr>
     <th>Light Mode</th>
     <th>Dark Mode</th>
+    <th>GIF Example</th>
   </tr>
   <tr>
-    <td><img src="" width="250"></td>
-    <td><img src="" width="250"></td>
+    <td><img src="" width="200"></td>
+    <td><img src="" width="200"></td>
+    <td><img src="" width="200"></td>
   </tr>
 </table>
 
